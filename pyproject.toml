@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "wikipedia-pageviews"
+version = "0.1.0"
+description = "Automatically fetch the 100 most popular articles on English Wikipedia by pageviews - tracking interest trends over time."
+authors = ["vtasca <https://github.com/vtasca>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.3"
+beautifulsoup4 = "^4.12.3"
+pandas = "^2.2.3"
+python-dateutil = "^2.9.0.post0"
+loguru = "^0.7.2"
+python-dotenv = "^1.0.1"
+tqdm = "^4.66.5"
+
+[tool.ruff]
+line-length = 100
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+ruff = "^0.6.8"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
