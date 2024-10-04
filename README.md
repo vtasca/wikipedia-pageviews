@@ -1,13 +1,13 @@
 # Wikipedia Article Pageviews
 This repository automatically fetches and aggregates the 100 most popular Wikipedia articles by pageviews - creating a dataset that enables tracking trending topics on Wikipedia.
 
-It works by polling the WikiMedia API on a daily basis and fetching the top 100 most popular articles of the previous day. 
+It works by polling the WikiMedia API on a daily basis and fetching the top 100 most popular articles from two days ago. 
 The fetcher runs in a scheduled GitHub Actions workflow, which is [available here](https://github.com/vtasca/wikipedia-pageviews/actions/workflows/main.yml).
 
 The dataset begins in the year 2016 and the textual data is presented as it is found on the website of Wikipedia.
 
 ## Usage
-The updated dataset is located in this repository at [`pageviews.csv`](https://github.com/vtasca/wikipedia-pageviews/blob/master/pageviews.csv). Data for day $D_{t-1}$ is added on day $D_t$ at noon.
+The updated dataset is located in this repository at [`pageviews.csv`](https://github.com/vtasca/wikipedia-pageviews/blob/master/pageviews.csv). Data for day $D_{t-2}$ is added on day $D_t$ at noon.
 
 ### Data description
 - `rank` - Rank of the article (out of 100).

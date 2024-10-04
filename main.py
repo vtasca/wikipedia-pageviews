@@ -13,27 +13,27 @@ HEADERS = {
 def main():
     fetcher = WikipediaFetcher(headers=HEADERS, mode='csv', csv_path='pageviews.csv')
 
-    yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y/%m/%d')
+    two_days_ago = (datetime.now() - timedelta(days=2)).strftime('%Y/%m/%d')
 
-    raw_data = fetcher.fetch_pageviews(yesterday)
+    raw_data = fetcher.fetch_pageviews(two_days_ago)
 
     if raw_data:
-        processed_data = fetcher.parse_raw_data(raw_data, yesterday)
+        processed_data = fetcher.parse_raw_data(raw_data, two_days_ago)
 
         if processed_data is not None:
 
             last_appended_date = fetcher.read_last_csv_row()[-1]
 
-            if last_appended_date == yesterday:
-                print(f"Data for {yesterday} has already been appended")
+            if last_appended_date > two_days_ago:
+                print(f"Data for {two_days_ago} has already been appended")
                 return
 
             fetcher.insert_data(processed_data)
-            print(f"Successfully inserted data for {yesterday}")
+            print(f"Successfully inserted data for {two_days_ago}")
         else:
-            print(f"No data to insert for {yesterday}")
+            print(f"No data to insert for {two_days_ago}")
     else:
-        print(f"Failed to fetch data for {yesterday}")
+        print(f"Failed to fetch data for {two_days_ago}")
 
     fetcher.close_connection()
 
