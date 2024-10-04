@@ -24,7 +24,7 @@ def main():
 
             last_appended_date = fetcher.read_last_csv_row()[-1]
 
-            if last_appended_date > two_days_ago:
+            if last_appended_date < two_days_ago:
                 print(f"Data for {two_days_ago} has already been appended")
                 return
 
