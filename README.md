@@ -15,6 +15,9 @@ The updated dataset is located in this repository at [`pageviews.csv`](https://g
 - `views` - Number of pageviews (across all platforms).
 - `date` - Date of the pageviews.
 
+### Availability
+The dataset is also available on [Kaggle](https://www.kaggle.com/datasets/vladtasca/wikipedia-pageviews), together with related Jupyter notebooks.
+
 ## Related research
 Wikipedia content has been analyzed in various ways in academic research, for instance to summarize topics in an unsupervised manner[^1] or to predict voting behavior in elections[^2].
 [^1]: Ahn, B. G., Van Durme, B., & Callison-Burch, C. (2011, June). WikiTopics: What is popular on Wikipedia and why. In Proceedings of the workshop on automatic summarization for different genres, media, and languages (pp. 33-40).
