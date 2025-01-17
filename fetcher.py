@@ -27,7 +27,7 @@ class WikipediaFetcher:
         self.close_connection()
 
     def read_last_csv_row(self):
-        with open(self.csv_path, 'r', newline='') as file:
+        with open(self.csv_path, 'r', newline='', encoding='utf-8') as file:
             file.seek(0, 2)
             file.seek(file.tell() - 2, 0)
 
