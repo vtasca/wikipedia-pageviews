@@ -27,16 +27,13 @@ class WikipediaFetcher:
         self.close_connection()
 
     def read_last_csv_row(self):
-        with open(self.csv_path, 'r', newline='', encoding='utf-8') as file:
-            file.seek(0, 2)
-            file.seek(file.tell() - 2, 0)
-
-            while file.read(1) != "\n":
-                file.seek(file.tell() - 2, 0)
-            
-            last_line = file.readline()
-        
+        with open(self.csv_path, 'rb') as file:
+            file.seek(-2, 2)
+            while file.read(1) != b'\n':
+                file.seek(-2, 1)
+            last_line = file.readline().decode('utf-8', errors='replace')  # Replace invalid chars
         return last_line.strip().split(',')
+
 
     def init_db(self):
         # Create articles table
