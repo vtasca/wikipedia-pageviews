@@ -49,9 +49,32 @@ jobs:
 
     - name: Commit and push if it changed
       run: |-
-        git config user.name "Automated"
-        git config user.email "actions@users.noreply.github.com"
+        git config --global user.name "Automated"
+        git config --global user.email "actions@users.noreply.github.com"
         git add -A
         timestamp=$(date -u)
         git commit -m "Latest data: ${timestamp}" || exit 0
         git push
+
+    - name: Install Git LFS
+      run: |-
+        sudo apt-get update
+        sudo apt-get install -y git-lfs
+        git lfs install
+
+    - name: Push data to Hugging Face
+      if: ${{ env.HF_TOKEN != '' }}
+      run: |-
+        git clone https://user:${HF_TOKEN}@huggingface.co/datasets/vtasca/wikipedia-pageviews hf_repo
+        cd hf_repo
+
+        git lfs track "pageviews.csv"
+        git add .gitattributes || true
+
+        cp ../pageviews.csv .
+        git add pageviews.csv
+        git commit -m "Latest data: $(date -u)" || exit 0
+
+        git push origin main
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
