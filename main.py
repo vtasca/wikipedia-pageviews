@@ -1,13 +1,12 @@
 from fetcher import WikipediaFetcher
 from datetime import datetime, timedelta
-import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
 HEADERS = {
     "User-Agent": "CuriosityIndexBot/0.1 (https://github.com/vtasca)",
-    "Authorization": "Bearer " + os.getenv("MEDIAWIKI_ACCESS_TOKEN"),
 }
 
 def main():
